@@ -1,7 +1,11 @@
 #ifdef _WIN32
 #include <SDL/SDL.h>
 #else
+#ifdef USE_SDL2
 #include <SDL2/SDL.h>
+#else
+#include <SDL/SDL.h>
+#endif
 #endif
 #include <iostream>
 #include "AudioSDL.h"
@@ -85,7 +89,7 @@ static void printUsage()
     cout << "tedplay - a (mostly) Commodore 264 family media player" << endl;
     cout << "Copyright 2012,2015 Attila Grosz" << endl;
     cout << "Usage:" << endl;
-    cout << "tedplay filename" << endl;
+    cout << " tedplay <filename>" << endl;
 }
 
 int main(int argc, char *argv[])

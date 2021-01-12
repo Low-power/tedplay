@@ -1,6 +1,10 @@
 #include <iostream>
 #ifndef _WIN32
+#ifdef USE_SDL2
 #include <SDL2/SDL.h>
+#else
+#include <SDL/SDL.h>
+#endif
 #include "AudioSDL.h"
 
 bool AudioSDL::hasSDL()
@@ -119,7 +123,9 @@ AudioSDL::AudioSDL(void *userData, unsigned int sampleFrq_ = 48000,
 		return;
 	} else {
 		fprintf(stderr,"SDL_OpenAudio success!\n");
+#ifdef USE_SDL2
 		fprintf(stderr, "Using audio driver : %s\n", SDL_GetCurrentAudioDriver());
+#endif
 		if ( obtained == NULL ) {
 			fprintf(stderr, "Great! We have our desired audio format!\n");
 			audiohwspec = desired;
