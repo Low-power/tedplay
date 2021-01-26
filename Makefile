@@ -1,4 +1,5 @@
-CXXFLAGS += -Wall -Os
+CXXFLAGS += -Wall -Werror=sequence-point -Os
+LIBS += -l m
 ifdef USE_SDL2
 CXXFLAGS += -D USE_SDL2=2
 LIBS += -l SDL2
